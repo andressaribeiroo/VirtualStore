@@ -4,6 +4,7 @@ import com.tech.backend.entity.Categoria;
 import com.tech.backend.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -14,6 +15,8 @@ public class CategoriaService {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
+
+    @Transactional(readOnly = true)
     public List<Categoria> findAll(){
         return categoriaRepository.findAll();
     }

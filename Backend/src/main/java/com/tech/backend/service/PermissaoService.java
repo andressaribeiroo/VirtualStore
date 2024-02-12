@@ -4,6 +4,7 @@ import com.tech.backend.entity.Permissao;
 import com.tech.backend.repository.PermissaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -14,6 +15,8 @@ public class PermissaoService {
     @Autowired
     private PermissaoRepository permissaoRepository;
 
+
+    @Transactional(readOnly = true)
     public List<Permissao> findAll(){
         return permissaoRepository.findAll();
     }

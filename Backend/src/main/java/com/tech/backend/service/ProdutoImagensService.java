@@ -6,6 +6,7 @@ import com.tech.backend.repository.ProdutoImagensRepository;
 import com.tech.backend.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -23,6 +24,9 @@ public class ProdutoImagensService {
 
     @Autowired
     private ProdutoRepository produtoRepository;
+
+
+    @Transactional(readOnly = true)
     public List<ProdutoImagens> findAll(){
         return produtoImagensRepository.findAll();
     }
