@@ -4,6 +4,7 @@ import com.tech.backend.entity.Marca;
 import com.tech.backend.repository.MarcaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -14,6 +15,8 @@ public class MarcaService {
     @Autowired
     private MarcaRepository marcaRepository;
 
+
+    @Transactional(readOnly = true)
     public List<Marca> findAll(){
         return marcaRepository.findAll();
     }

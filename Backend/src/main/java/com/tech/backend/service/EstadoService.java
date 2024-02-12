@@ -4,6 +4,7 @@ import com.tech.backend.entity.Estado;
 import com.tech.backend.repository.EstadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -14,6 +15,8 @@ public class EstadoService {
     @Autowired
     private EstadoRepository estadoRepository;
 
+
+    @Transactional(readOnly = true)
     public List<Estado> findAll(){
         return estadoRepository.findAll();
     }
