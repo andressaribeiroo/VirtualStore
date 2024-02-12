@@ -20,12 +20,17 @@ public class PessoaClienteService {
     @Autowired
     private PermissaoPessoaService permissaoPessoaService;
 
+    @Autowired
+    private EmailService emailService;
 
     public Pessoa insert(PessoaClienteDTO pessoaCliente){
         Pessoa pessoa = new PessoaClienteDTO().converter(pessoaCliente);
         pessoa.setDataCreate(new Date());
         Pessoa newPessoa = pessoaRepository.saveAndFlush(pessoa);
         permissaoPessoaService.vincularPermissaoPessoaCliente(newPessoa);
+        emailService.envairEmailTexto(newPessoa.getEmail(), "Cadastro realizado na VirtualStore", "Registro realizado com sucesso. Em breve você recebera seu acesso com senha por email");
+
+
         return newPessoa;
     }
 
